@@ -18,3 +18,6 @@ body{
   color: rgb(129, 24, 235);
   font-family: 'Lucida Sans',  sans-serif;
 }
+.postNumber{
+  font-weight: bold;
+}

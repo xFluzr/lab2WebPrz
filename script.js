@@ -3,6 +3,7 @@
   const cw1 = document.getElementById("cw1");
   const cw2 = document.getElementById("cw2");
   const cw3 = document.getElementById("cw3");
+  const cw4 = document.getElementById("cw4");
   const answer = document.getElementById("answer");
 
   example.addEventListener("click", function () {
@@ -56,13 +57,35 @@
     answer.innerHTML = loadingElement;
     const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
     const resData = await res.json();
-    console.log(resData)
+    console.log(resData);
     let arrayStyled = `<div class='post'>
           <h4>${resData.title}</h4>
           <p>${resData.body}</p>
           <p>Numer posta:<span class='postNumber'>${resData.id}</span></p>
           </div>`;
     answer.innerHTML = arrayStyled;
-    
+  });
+
+  loadingElement = `<div><h2>Processing...</h2></div>`;
+  cw4.addEventListener("click", async function () {
+    answer.innerHTML = loadingElement;
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      body: {
+        userId: 11,
+        id: 101,
+        title: "TEST",
+        body: "af",
+      },
+    });
+    const responseData = await res.json();
+    console.log(responseData)
+    let arrayStyled = ``;
+    setTimeout(() => {
+      arrayStyled += `<div class='post'>
+          <p>Dodano post o numerze <span class='postNumber'>${responseData.id}</span></p>
+          </div>`;
+      answer.innerHTML = arrayStyled;
+    }, 1000);
   });
 })();
