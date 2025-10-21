@@ -20,24 +20,26 @@
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((array) => {
-        console.log(array);
         array.map((post) => {
-          console.log(array);
           styledHtml += `<div class='post'>
           <h4>${post.title}</h4>
           <p>${post.body}</p>
           <p>Numer posta:<span class='postNumber'>${post.id}</span></p>
           </div>`;
         });
+        console.log(array)
         answer.innerHTML = styledHtml;
       });
   });
 
-  let loadingElement = `<div><h2>Loading...</h2></div>`;
+  let loadingElement = ``;
+
   cw2.addEventListener("click", async function () {
+    window.alert("Loading...");
     answer.innerHTML = loadingElement;
     const res = await fetch("https://jsonplaceholder.typicode.com/posts");
     const responseArray = await res.json();
+    window.alert = function () {};
     let arrayStyled = ``;
     setTimeout(() => {
       responseArray.map((post) => {
@@ -48,12 +50,14 @@
           <p>Numer posta:<span class='postNumber'>${post.id}</span></p>
           </div>`;
       });
+
       answer.innerHTML = arrayStyled;
-    }, 1000);
+    }, 500);
   });
 
   styledHtml = "   ";
   cw3.addEventListener("click", async function () {
+    let loadingElement = `<div><h2>Loading...</h2></div>`;
     answer.innerHTML = loadingElement;
     const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
     const resData = await res.json();
@@ -66,8 +70,8 @@
     answer.innerHTML = arrayStyled;
   });
 
-  loadingElement = `<div><h2>Processing...</h2></div>`;
   cw4.addEventListener("click", async function () {
+    let loadingElement = `<div><h2>Processing...</h2></div>`;
     answer.innerHTML = loadingElement;
     const res = await fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "POST",
@@ -79,7 +83,7 @@
       },
     });
     const responseData = await res.json();
-    console.log(responseData)
+    console.log(responseData);
     let arrayStyled = ``;
     setTimeout(() => {
       arrayStyled += `<div class='post'>
