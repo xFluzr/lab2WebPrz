@@ -92,4 +92,26 @@
       answer.innerHTML = arrayStyled;
     }, 1000);
   });
+
+  cw5.addEventListener("click", async function () {
+    let loadingElement = `<div><h2>Processing...</h2></div>`;
+    answer.innerHTML = loadingElement;
+    const res = await fetch("https://my-json-server.typicode.com/xFluzr/postyJSON/posts");
+    const responseArray = await res.json();
+    console.log(responseArray);
+    let arrayStyled = ``;
+    setTimeout(() => {
+        responseArray.map((post)=>{
+        arrayStyled += `<div class='post'>
+          <p>Dodano post o numerze <span class='postNumber'>${post.title}</span></p>
+          <p>Dodano post o numerze <span class='postNumber'>${post.id}</span></p>
+          </div>`;
+      })
+      
+      answer.innerHTML = arrayStyled;
+    }, 1000);
+  });
+
+  //https://my-json-server.typicode.com/xFluzr/postyJSON
+
 })();
