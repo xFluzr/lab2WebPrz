@@ -51,16 +51,18 @@
     }, 1000);
   });
 
-  styledHtml = "";
+  styledHtml = "   ";
   cw3.addEventListener("click", async function () {
     answer.innerHTML = loadingElement;
     const res = await fetch("https://jsonplaceholder.typicode.com/posts/1");
     const resData = await res.json();
+    console.log(resData)
     let arrayStyled = `<div class='post'>
           <h4>${resData.title}</h4>
           <p>${resData.body}</p>
           <p>Numer posta:<span class='postNumber'>${resData.id}</span></p>
           </div>`;
     answer.innerHTML = arrayStyled;
+    
   });
 })();
