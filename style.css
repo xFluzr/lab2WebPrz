@@ -2,3 +2,22 @@ html {
   height: 100%;
   width: 100%;
 }
+body{
+  font-family: 'Lucida Sans',sans-serif;
+}
+
+.post{
+  margin: 1rem 0;
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 1rem;
+}
+.header-post{
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: rgb(129, 24, 235);
+  font-family: 'Lucida Sans',  sans-serif;
+}
+.post-body{
+  
+}
