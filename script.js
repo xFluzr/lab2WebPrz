@@ -32,9 +32,22 @@
       });
   })
 
-  cw2.addEventListener("click", function () {
-    //TODO
-  })
+  let loadingElement = `<div><h2>Loading...</h2></div>`;
+  cw2.addEventListener("click", async function () {
+    answer.innerHTML = loadingElement;
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const responseArray = await res.json();
+    let arrayStyled = ``;
+    responseArray.map((post) => {
+      console.log(post);
+      arrayStyled += `<div class='post'>
+          <h4>${post.title}</h4>
+          <p>${post.body}</p>
+          <p>Numer posta:<span class='postNumber'>${post.id}</span></p>
+          </div>`;
+    });
+    answer.innerHTML = arrayStyled;
+  });
 
   cw3.addEventListener("click", function () {
     //TODO
